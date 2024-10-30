@@ -6,16 +6,16 @@
     <script type="text/javascript">
       function createTable()
       {
-        var node = document.createElement('table');
+        var node = document.createElement('table');  
         node.id = 'myTable';
 		document.getElementById('tableArea').appendChild(node);
 
-        var row = document.createElement('tr');
+        var row = document.createElement('tr'); 
 
-        var uid = document.createElement('th');
+        var uid = document.createElement('th'); 
         uid.innerHTML = 'User ID';
         row.appendChild( uid );
-        var name = document.createElement('th');
+        var name = document.createElement('th'); 
         name.innerHTML = 'Name';
         row.appendChild( name );
 
@@ -31,6 +31,10 @@
 		  var uid = document.createElement('td');
           uid.innerHTML = document.getElementById('uid').value;
           row.appendChild( uid );
+
+      var name = document.createElement('td');
+          name.innerHTML = document.getElementById('name').value;
+          row.appendChild(name);
 
 		  t.appendChild(row);
       }

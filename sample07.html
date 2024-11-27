@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title></title>
+
+    <script>
+    // https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#searchexamples
+    //The fully-qualified URL must have the following format:
+    //callback	The name of the Javascript callback function you want to use when returning search results to your website. For example: wsSearchCB.
+    //lang	The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. For example: en_us. The default is en_us (English).
+
+    function searchCallback(result) {
+      output = document.getElementById('outputArea');
+      output.innerHTML = JSON.stringify(result);
+      results = result.results;
+      for (var r of results) {
+        output.innerHTML += r.trackName;
+        output.innerHTML += '<hr/>';
+      }
+    }
+    </script>
+
+  </head>
+  <body>
+
+<div id='status'></div>
+<div id='outputArea'></div>
+
+<script id=caller src='https://itunes.apple.com/search?term=手嶌&country=JP&lang=ja_JP&callback=searchCallback'></script>
+
+  </body>
+</html>

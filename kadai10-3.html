@@ -1,22 +1,30 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-<script>
-    function attend(data)
-    {
-        var st = data.Results[0];
-        var row = document.getElementById('onestudent');
+        <script>
+            function attend(result) {
+                const student = result.Results[0];
 
-        for(var a of st.Attends)
-        {
-            row.innerHTML += a.Attend;  // これだと、表にならない（間違い）
-        }
-    }
-</script>
+
+const tableRow = document.getElementById("onestudent");
+
+
+const studentIdCell = document.createElement("td");
+studentIdCell.textContent = student.Sid;
+tableRow.appendChild(studentIdCell);
+
+
+    for (const record of student.Attends) {
+    const attendCell = document.createElement("td");
+    attendCell.textContent = record.Attend;
+    tableRow.appendChild(attendCell);
+}
+}
+        </script>
     </head>
     <body>
 <table><tr><th>学籍番号</th></tr><tr id="onestudent"></tr></table>
 
-<script src='https://iis.edu.tama.ac.jp/websv/students.php?sid=29988777&cid=10001&summary=0&callback=attend&key=21100999'></script>
+<script src='https://iis.edu.tama.ac.jp/websv/students.php?sid=29988777&cid=10001&summary=0&callback=attend&key=21100999'></scrip>
     </body>
 </html>

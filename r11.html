@@ -1,0 +1,57 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .warn {
+            background-color: #ffcccc; /* 警告の背景色 */
+        }
+    </style>
+    <script>
+        function attend(data) {
+            var r = data.Results;
+            var tbl = document.createElement('table');
+            tbl.border = 1; // テーブルに枠線を追加
+            
+            // テーブルのヘッダーを追加
+            var headerRow = document.createElement('tr');
+            var headerSid = document.createElement('th');
+            headerSid.innerHTML = "学籍番号";
+            var headerRate = document.createElement('th');
+            headerRate.innerHTML = "出席率";
+            headerRow.appendChild(headerSid);
+            headerRow.appendChild(headerRate);
+            tbl.appendChild(headerRow);
+
+            for (var st of r) {
+                var shusseki = Number(st.attend);
+                var kesseki = Number(st.absent);
+                var ritsu = shusseki / (shusseki + kesseki);
+
+                if (ritsu < 0.8) { // 出席率が80%未満の学生のみ処理
+                    var row = document.createElement('tr');
+                    row.className = 'warn'; // 警告クラスを適用
+
+                    var sid = document.createElement('td');
+                    sid.innerHTML = st.Sid;
+
+                    var rate = document.createElement('td');
+                    rate.innerHTML = (ritsu * 100).toFixed(2) + "%"; // 出席率を%表示
+
+                    row.appendChild(sid);
+                    row.appendChild(rate);
+                    tbl.appendChild(row);
+                }
+            }
+
+            // テーブルを警告エリアに追加
+            document.getElementById('warning').appendChild(tbl);
+        }
+    </script>
+</head>
+<body>
+    <div id="warning"></div>
+    <script src="https://iis.edu.tama.ac.jp/websv/students.php?sid=29988777&cid=10001&summary=0&callback=attend&key=21100999"></script>
+</body>
+</html>
+//rowの中にtdを追加していくのが課題
+3〜4行12行目あたり

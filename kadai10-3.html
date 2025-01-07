@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+<script>
+    function attend(data)
+    {
+        var st = data.Results[0];
+        var row = document.getElementById('onestudent');
+
+        for(var a of st.Attends)
+        {
+            row.innerHTML += a.Attend;  // これだと、表にならない（間違い）
+        }
+    }
+</script>
+    </head>
+    <body>
+<table><tr><th>学籍番号</th></tr><tr id="onestudent"></tr></table>
+
+<script src='https://iis.edu.tama.ac.jp/websv/students.php?sid=29988777&cid=10001&summary=0&callback=attend&key=21100999'></script>
+    </body>
+</html>

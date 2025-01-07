@@ -13,7 +13,8 @@
       output.innerHTML = JSON.stringify(result);
       results = result.results;
       for (var r of results) {
-        output.innerHTML += r.trackName;
+        output.innerHTML += r.trackName+ '<br>';
+        output.innerHTML += `<img src="${r.artworkUrl60}" style="width:100px; height:100px;">`;
         output.innerHTML += '<hr/>';
       }
     }
